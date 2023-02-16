@@ -48,6 +48,7 @@ public class Order implements Serializable {
 	public Order() {
 	}
 
+	//no construtor deve ter os atributos ESSENCIAIS da classe
 	public Order(Long id, Instant moment, User client, OrderStatus orderStatus) {
 		super();
 		this.id = id;

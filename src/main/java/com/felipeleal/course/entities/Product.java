@@ -32,7 +32,7 @@ public class Product  implements Serializable {
 	private Double price;
 	private String imgUrl;
 	
-	//(nome da tabela de associação, chave estrangeira de uma entidade, chave estrangeira da outra entidade) * para * cria-se uma tabela de associação
+	//(nome da tabela de associação, chave estrangeira dessa entidade, chave estrangeira da outra entidade) * para * cria-se uma tabela de associação
 	@ManyToMany
 	@JoinTable(name = "tb_product_category", 
 	joinColumns = @JoinColumn(name = "product_id"),

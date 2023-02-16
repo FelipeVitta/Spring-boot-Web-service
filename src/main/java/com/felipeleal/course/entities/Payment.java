@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +26,7 @@ public class Payment implements Serializable{
 	private Instant moment;
 	
 	@OneToOne
-	@MapsId //classe dependente
+	@MapsId //automatically populate the primary key of a child table from the parent table
 	private Order order;
 	
 	public Payment() {
@@ -52,7 +54,8 @@ public class Payment implements Serializable{
 	public void setMoment(Instant moment) {
 		this.moment = moment;
 	}
-
+	
+	@JsonIgnore
 	public Order getOrder() {
 		return order;
 	}
