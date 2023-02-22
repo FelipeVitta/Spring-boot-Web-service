@@ -36,7 +36,7 @@ public class Order implements Serializable {
 	private Integer orderStatus;
 
 	@ManyToOne
-	@JoinColumn(name = "client_id") // cria uma coluna chamada client_id que se relaciona com o User (cria uma coluna na entidade do 1)
+	@JoinColumn(name = "client_id") // cria uma coluna chamada client_id que se relaciona com o User (cria uma coluna na entidade do "One")
 	private User client;
 	
 	@OneToMany(mappedBy = "id.order")
@@ -88,6 +88,14 @@ public class Order implements Serializable {
 
 	public void setClient(User client) {
 		this.client = client;
+	}
+	
+	public Double getTotal() {
+		double sum = 0.0;
+		for(OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
 	}
 
 	@Override
